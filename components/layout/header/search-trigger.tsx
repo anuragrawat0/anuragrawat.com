@@ -25,11 +25,10 @@ export function SearchTrigger({ onClick }: SearchTriggerProps) {
       </svg>
 
       <span className="hidden items-center gap-1 sm:flex">
-        <kbd className="inline-flex h-5 min-w-6 items-center justify-center rounded-sm bg-black/5 px-1 font-sans text-sm
-        font-normal leading-none text-foreground shadow-[inset_0_-1px_2px] shadow-black/10 dark:bg-white/10 dark:shadow-white/10">
+        <kbd className="inline-flex h-5 min-w-6 items-center justify-center rounded-sm bg-black/5 px-1 font-sans text-sm font-normal leading-none text-muted-foreground shadow-[inset_0_-1px_2px] shadow-black/10 dark:bg-white/10 dark:shadow-white/10">
           Ctrl
         </kbd>
-        <kbd className="inline-flex h-5 w-5 items-center justify-center rounded-sm bg-black/5 px-1 font-sans text-sm font-normal leading-none text-foreground shadow-[inset_0_-1px_2px] shadow-black/10 dark:bg-white/10 dark:shadow-white/10">
+        <kbd className="inline-flex h-5 w-5 items-center justify-center rounded-sm bg-black/5 px-1 font-sans text-sm font-normal leading-none text-muted-foreground shadow-[inset_0_-1px_2px] shadow-black/10 dark:bg-white/10 dark:shadow-white/10">
           K
         </kbd>
       </span>

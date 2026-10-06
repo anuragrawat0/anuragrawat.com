@@ -32,7 +32,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground antialiased`}
       >
         <ThemeProvider>
-          <div className="mx-auto min-h-screen w-full max-w-[900px] border-x border-border">
+          <div className="mx-auto min-h-screen w-full max-w-[780px] border-x border-border">
             <Header />
 
             <main>{children}</main>

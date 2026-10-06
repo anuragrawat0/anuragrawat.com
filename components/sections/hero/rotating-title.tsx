@@ -26,7 +26,7 @@ export function RotatingTitle({
   if (!titles.length) return null;
 
   return (
-    <div className="relative h-5 overflow-hidden text-sm text-foreground font-sans opacity-75">
+    <div className="relative h-5 overflow-hidden text-sm text-foreground font-sans opacity-65">
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
           key={titles[index]}

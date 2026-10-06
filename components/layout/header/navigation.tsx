@@ -14,7 +14,7 @@ export function HeaderNavigation() {
         <Link
           key={item.name}
           href={item.href}
-          className="font-sans text-sm font-medium tracking-wide text-foreground transition-opacity duration-200 hover:opacity-60"
+          className="font-sans text-sm font-medium tracking-wide text-foreground transition-opacity duration-200 hover:opacity-100 opacity-75"
         >
           {item.name}
         </Link>

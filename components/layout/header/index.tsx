@@ -25,13 +25,13 @@ export function Header() {
 
   return (
     <>
-      <header className="relative h-16">
+      <header className="relative h-15">
         <div
           aria-hidden="true"
           className="absolute bottom-0 left-1/2 h-px w-screen -translate-x-1/2 bg-border"
         />
 
-        <div className="flex h-full items-center justify-between px-5 sm:px-6">
+        <div className="flex h-full items-center justify-between px-4">
           <HeaderNavigation />
 
           <div className="flex items-center">

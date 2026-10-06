@@ -7,7 +7,7 @@ export function Profile() {
         aria-hidden="true"
         className="absolute bottom-0 left-1/2 h-px w-screen -translate-x-1/2 bg-border"
       />
-      <div className="flex items-stretch justify-between p-3 sm:p-4">
+      <div className="flex items-stretch justify-between p-4">
         <ProfileSwitcher />
 
         {/* Viewer count */}
