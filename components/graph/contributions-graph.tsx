@@ -445,7 +445,12 @@ export type ContributionGraphTotalCountProps = Omit<
   HTMLAttributes<HTMLDivElement>,
   "children"
 > & {
-  children?: (props: { totalCount: number; year: number }) => ReactNode
+  children?: (props: {
+    totalCount: number
+    year: number
+    startDate: string
+    endDate: string
+  }) => ReactNode
 }
 
 export const ContributionGraphTotalCount = ({
@@ -453,10 +458,23 @@ export const ContributionGraphTotalCount = ({
   children,
   ...props
 }: ContributionGraphTotalCountProps) => {
-  const { totalCount, year, labels } = useContributionGraph()
+  const { data, totalCount, year, labels } = useContributionGraph()
 
   if (children) {
-    return <>{children({ totalCount, year })}</>
+    const dates = data
+      .map((activity) => activity.date)
+      .sort((a, b) => a.localeCompare(b))
+
+    return (
+      <>
+        {children({
+          totalCount,
+          year,
+          startDate: dates[0] ?? "",
+          endDate: dates.at(-1) ?? "",
+        })}
+      </>
+    )
   }
 
   return (

@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { format } from "date-fns";
 
 import {
@@ -20,69 +19,16 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-const GITHUB_USERNAME = "anuragrawat0";
-const GITHUB_PROFILE_URL = "https://github.com/anuragrawat0";
-
-type GitHubResponse = {
-  contributions: Activity[];
+type GitHubContributionsProps = {
+  data: Activity[];
+  profileUrl: string;
 };
 
-export function GitHubContributions() {
-  const [data, setData] = useState<Activity[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    async function loadContributions() {
-      try {
-        const response = await fetch(
-          `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}?y=last`,
-          {
-            signal: controller.signal,
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch contributions");
-        }
-
-        const result = (await response.json()) as GitHubResponse;
-
-        setData(result.contributions ?? []);
-      } catch (error) {
-        if (controller.signal.aborted) {
-          return;
-        }
-
-        console.error(error);
-        setError(true);
-      } finally {
-        if (!controller.signal.aborted) {
-          setLoading(false);
-        }
-      }
-    }
-
-    loadContributions();
-
-    return () => {
-      controller.abort();
-    };
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="flex h-40 items-center justify-center">
-        <span className="text-sm text-muted-foreground">
-          Loading GitHub activity...
-        </span>
-      </div>
-    );
-  }
-
-  if (error || data.length === 0) {
+export function GitHubContributions({
+  data,
+  profileUrl,
+}: GitHubContributionsProps) {
+  if (data.length === 0) {
     return (
       <div className="flex h-40 items-center justify-center">
         <span className="text-sm text-muted-foreground">
@@ -130,11 +76,17 @@ export function GitHubContributions() {
 
         <ContributionGraphFooter className="px-4">
           <ContributionGraphTotalCount>
-            {({ totalCount, year }) => (
+            {({ totalCount, startDate, endDate }) => (
               <div className="text-sm text-muted-foreground">
-                {totalCount.toLocaleString("en")} contributions in {year} on{" "}
+                {totalCount.toLocaleString("en")} contributions · {format(
+                  new Date(`${startDate}T00:00:00`),
+                  "MMM d, yyyy",
+                )} – {format(
+                  new Date(`${endDate}T00:00:00`),
+                  "MMM d, yyyy",
+                )} on{" "}
                 <a
-                  href={GITHUB_PROFILE_URL}
+                  href={profileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-foreground underline underline-offset-4"
