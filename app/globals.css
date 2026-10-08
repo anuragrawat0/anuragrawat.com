@@ -411,3 +411,22 @@
     transform: translate(0);
   }
 }
+
+@keyframes opportunity-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 rgb(59 130 246 / 0),
+      0 0 0 1px rgb(59 130 246 / 0.15);
+  }
+
+  50% {
+    box-shadow:
+      0 0 12px 2px rgb(59 130 246 / 0.25),
+      0 0 0 1px rgb(59 130 246 / 0.45);
+  }
+}
+
+.opportunity-glow {
+  animation: opportunity-glow 2s ease-in-out infinite;
+}
